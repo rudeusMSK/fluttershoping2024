@@ -1,8 +1,4 @@
-import 'package:mainpage_detailuser_v1/page/checkout.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class ChangePlace extends StatefulWidget {
   final String place;
@@ -85,7 +81,7 @@ class _ChangePlaceState extends State<ChangePlace> {
                 child:  Column(
                   
                   children: [
-                    Container(
+                    SizedBox(
                       width: 350,
                       child: TextField(
                         controller: oldAdress,
@@ -93,8 +89,8 @@ class _ChangePlaceState extends State<ChangePlace> {
                         enabled: false,
                         decoration: InputDecoration(
                           labelText: widget.place,
-                          hintStyle: TextStyle(color: Color.fromARGB(255, 108, 108, 108)),
-                          labelStyle: TextStyle(color: Colors.black, fontSize: 20,),
+                          hintStyle: const TextStyle(color: Color.fromARGB(255, 108, 108, 108)),
+                          labelStyle: const TextStyle(color: Colors.black, fontSize: 20,),
                           
                           filled: true,
                           border: UnderlineInputBorder(
@@ -102,7 +98,7 @@ class _ChangePlaceState extends State<ChangePlace> {
                           ),
                           
                           
-                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                          contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         ),
                         
                       ),
@@ -128,7 +124,7 @@ class _ChangePlaceState extends State<ChangePlace> {
                 child:  Column(
                   
                   children: [
-                    Container(
+                    SizedBox(
                       width: 350,
                       child: TextField(
                         controller: newAdress,
@@ -136,20 +132,20 @@ class _ChangePlaceState extends State<ChangePlace> {
                         decoration: InputDecoration(
                           
                           hintText: "Địa chỉ mới",
-                          hintStyle: TextStyle(color: Color.fromARGB(255, 108, 108, 108)),
-                          labelStyle: TextStyle(color: Colors.black, fontSize: 20,),
+                          hintStyle: const TextStyle(color: Color.fromARGB(255, 108, 108, 108)),
+                          labelStyle: const TextStyle(color: Colors.black, fontSize: 20,),
                           
                           filled: true,
                           enabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(color: Colors.black), // Màu của underline khi focused
+                            borderSide: const BorderSide(color: Colors.black), // Màu của underline khi focused
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
+                            borderSide: const BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           
-                          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                          contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         ),
                         
                       ),
@@ -160,14 +156,13 @@ class _ChangePlaceState extends State<ChangePlace> {
               ),
 
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
                 child: ElevatedButton(
                   
-                  child: Text("Lưu"),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(350, 40),
-                    backgroundColor: Color(0xFF61ADF3),
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                    minimumSize: const Size(350, 40),
+                    backgroundColor: const Color(0xFF61ADF3),
+                    padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                     elevation: 3,
                     foregroundColor: Colors.white,
                     textStyle: const TextStyle(
@@ -185,6 +180,8 @@ class _ChangePlaceState extends State<ChangePlace> {
                     // su ly thanh toan
                     Navigator.pop(context , newAdress.text);
                   },
+                  
+                  child: const Text("Lưu"),
                 ),
               ),
 

@@ -82,10 +82,10 @@ class Login extends StatelessWidget {
             ),
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.person),
+            prefixIcon: const Icon(Icons.person),
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         const Text(
           "Mật khẩu",
           style: TextStyle(

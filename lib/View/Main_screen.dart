@@ -132,7 +132,6 @@
 //   void onClickButton() {}
 // }
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:mainpage_detailuser_v1/components/app_bar.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/LoginBody.dart';
 import 'package:mainpage_detailuser_v1/components/bottom_navigationbar.dart';
@@ -140,7 +139,6 @@ import 'package:mainpage_detailuser_v1/components/bodyWidgets/chatBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/editBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/homeBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/loveBody.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/profileBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/Errorbody.dart';
 import 'package:mainpage_detailuser_v1/Model/Fake_User.dart';
 
@@ -174,12 +172,12 @@ class _Main_screenState extends State<Main_screen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> bodyItem = [
-      const LoginBody(), // 0
+      HomeBody(), // 0
       editbody(), // 1
       lovebody(), // 2
       chatbody(), // 3
-      
-      profilebody(), // 4
+      const LoginBody(),
+      //profilebody(), // 4
     ];
 
     return Scaffold(

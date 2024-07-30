@@ -1,12 +1,12 @@
 class User {
   int? idnd;
-  Null? tenND;
-  Null? hoTenDem;
+  Null tenND;
+  Null hoTenDem;
   String? email;
   String? gioiTinh;
-  Null? sdt;
-  Null? tuoi;
-  Null? matKhau;
+  Null sdt;
+  Null tuoi;
+  Null matKhau;
   String? tenDangNhap;
 
   User(
@@ -33,16 +33,16 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['idnd'] = this.idnd;
-    data['tenND'] = this.tenND;
-    data['ho_TenDem'] = this.hoTenDem;
-    data['email'] = this.email;
-    data['gioiTinh'] = this.gioiTinh;
-    data['sdt'] = this.sdt;
-    data['tuoi'] = this.tuoi;
-    data['matKhau'] = this.matKhau;
-    data['tenDangNhap'] = this.tenDangNhap;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['idnd'] = idnd;
+    data['tenND'] = tenND;
+    data['ho_TenDem'] = hoTenDem;
+    data['email'] = email;
+    data['gioiTinh'] = gioiTinh;
+    data['sdt'] = sdt;
+    data['tuoi'] = tuoi;
+    data['matKhau'] = matKhau;
+    data['tenDangNhap'] = tenDangNhap;
     return data;
   }
 }

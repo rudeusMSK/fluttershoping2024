@@ -1,40 +1,40 @@
 class Product {
-  int? idsp;
-  String? tenSP;
-  int? idThuongHieu;
-  int? idLoai;
-  int? idMau;
-  int? idTrangThai;
-  int? idnv;
+  int? iDSP;
+  String? moTa;
+  int? giaBan;
+  int? giaMua;
+  int? soLuong;
+  String? sodo;
+  String? donVi;
 
   Product(
-      {this.idsp,
-      this.tenSP,
-      this.idThuongHieu,
-      this.idLoai,
-      this.idMau,
-      this.idTrangThai,
-      this.idnv});
+      {this.iDSP,
+      this.moTa,
+      this.giaBan,
+      this.giaMua,
+      this.soLuong,
+      this.sodo,
+      this.donVi});
 
   Product.fromJson(Map<String, dynamic> json) {
-    idsp = json['idsp'];
-    tenSP = json['tenSP'];
-    idThuongHieu = json['idThuongHieu'];
-    idLoai = json['idLoai'];
-    idMau = json['idMau'];
-    idTrangThai = json['idTrangThai'];
-    idnv = json['idnv'];
+    iDSP = json['IDSP'];
+    moTa = json['MoTa'];
+    giaBan = json['GiaBan'];
+    giaMua = json['GiaMua'];
+    soLuong = json['SoLuong'];
+    sodo = json['Sodo'];
+    donVi = json['DonVi'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['idsp'] = this.idsp;
-    data['tenSP'] = this.tenSP;
-    data['idThuongHieu'] = this.idThuongHieu;
-    data['idLoai'] = this.idLoai;
-    data['idMau'] = this.idMau;
-    data['idTrangThai'] = this.idTrangThai;
-    data['idnv'] = this.idnv;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['IDSP'] = iDSP;
+    data['MoTa'] = moTa;
+    data['GiaBan'] = giaBan;
+    data['GiaMua'] = giaMua;
+    data['SoLuong'] = soLuong;
+    data['Sodo'] = sodo;
+    data['DonVi'] = donVi;
     return data;
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/components/app_bar.dart';
-import 'package:mainpage_detailuser_v1/components/bottom_navigationbar.dart';
 
 // ignore: camel_case_types
 class Profile_screen extends StatefulWidget {

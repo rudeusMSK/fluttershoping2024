@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
-import 'package:provider/provider.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -73,7 +72,6 @@ class _LoginBodyState extends State<LoginBody> {
                   : setState(() {
                       TextField_Invalid = Textvalue;
                     });
-              ;
             },
             child: const Text('Login'),
           ),

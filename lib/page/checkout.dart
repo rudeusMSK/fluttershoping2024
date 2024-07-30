@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/page/checkout.dart';
 import 'package:mainpage_detailuser_v1/page/editShipmet.dart';
 
 class checkout extends StatefulWidget {
@@ -134,7 +133,7 @@ class _checkoutState extends State<checkout> {
                 ],
               ),
               Align(
-                  alignment: AlignmentDirectional(-1, -1),
+                  alignment: const AlignmentDirectional(-1, -1),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -152,7 +151,7 @@ class _checkoutState extends State<checkout> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -173,10 +172,10 @@ class _checkoutState extends State<checkout> {
 
                             Flexible(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                 child: Text(
                                   newAddress,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 20,
                                         letterSpacing: 0,
@@ -200,7 +199,7 @@ class _checkoutState extends State<checkout> {
                                         color: Colors.black.withOpacity(0.2),
                                         blurRadius: 10,
                                         spreadRadius: 1,
-                                        offset: Offset(0,1),
+                                        offset: const Offset(0,1),
                                       ),
                                     ]
                                   ),
@@ -328,14 +327,13 @@ class _checkoutState extends State<checkout> {
               ),
 
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: ElevatedButton(
                   
-                  child: Text("Thanh Toán"),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(350, 40),
-                    backgroundColor: Color(0xFF61ADF3),
-                    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                    minimumSize: const Size(350, 40),
+                    backgroundColor: const Color(0xFF61ADF3),
+                    padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                     elevation: 3,
                     foregroundColor: Colors.white,
                     textStyle: const TextStyle(
@@ -352,6 +350,8 @@ class _checkoutState extends State<checkout> {
                   onPressed: () {
                     // su ly thanh toan
                   },
+                  
+                  child: const Text("Thanh Toán"),
                 ),
               ),
             ],

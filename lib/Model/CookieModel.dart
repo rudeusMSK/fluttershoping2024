@@ -5,14 +5,14 @@ class UserCookie {
   UserCookie({this.userID, this.token});
 
   UserCookie.fromJson(Map<String, dynamic> json) {
-    userID = json['userID'];
-    token = json['token'];
+    userID = json['UserID'];
+    token = json['Token'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userID'] = this.userID;
-    data['token'] = this.token;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['UserID'] = userID;
+    data['Token'] = token;
     return data;
   }
 }
