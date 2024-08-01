@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/Model/Product.dart';
+import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/ProductCartItem.dart';
 import 'package:mainpage_detailuser_v1/Services/ProductServices.dart';
 
@@ -10,8 +10,7 @@ class ProductViewModel extends ChangeNotifier {
   late List<ProductCart> productCards = [];
   late Product product;
 
-  void fetch_Product_Card_List() async {
-    int id = 0; 
+  void fetch_Product_Card_List(int id) async {
     productCards = (await ProductServices.fetchProductCardList(id));
     print("product cart: $productCards");
     notifyListeners();

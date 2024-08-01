@@ -1,5 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:dio/dio.dart';
-import 'package:mainpage_detailuser_v1/Model/Product.dart';
+import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/ProductCartItem.dart';
 
 class ProductServices {
@@ -12,13 +14,13 @@ class ProductServices {
         "Content-Type": "application/json"
       };
 
-      String get = 
+      String get_ = 
       id == 0
         ? "http://backendflutter2024.somee.com/api/ProductCartItem"
-        : "http://backendflutter2024.somee.com/api/ProductCartItem?=$id";
+        : "http://localhost:56413/api/ProductByCategory?categoryId=$id";
 
       Response response = await dio
-          .get('http://backendflutter2024.somee.com/api/ProductCartItem');
+          .get(get_);
 
       List<dynamic> data = response.data;
       List<ProductCart> productCardList =

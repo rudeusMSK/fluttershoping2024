@@ -12,7 +12,8 @@ class Categoryservice {
         'http://backendflutter2024.somee.com/api/CategoryDTO'
         );
       List<dynamic> data = response.data;
-      List<Category> categorylist =
+      List<Category> categorylist = [];
+      categorylist =
           data.map((item) => Category.fromJson(item)).toList();
       return categorylist;
     } catch (e) {

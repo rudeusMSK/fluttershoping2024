@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/Model/Product.dart';
+import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/product_view_Model.dart';
 
 class ProductDetailPage extends StatefulWidget {
