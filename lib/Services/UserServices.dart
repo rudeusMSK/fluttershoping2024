@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print, non_constant_identifier_names
+
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:mainpage_detailuser_v1/Model/CookieModel.dart';
+import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
 
 class UserServices {
   static final Dio dio = Dio();
@@ -43,6 +46,26 @@ class UserServices {
       } else {
         throw Exception('Đã xảy ra lỗi không xác định.');
       }
+    } catch (e) {
+      print('Lỗi: $e');
+      throw Exception('Đã xảy ra lỗi: $e');
+    }
+  }
+
+  static Future<User> fetch_User_Informations() async {
+    try {
+      dio.options.headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      };
+
+      var response = await dio.post(
+        "http://localhost:56413/api/userDetail"
+      );
+
+        Map<String, dynamic> data = response.data;
+        User user = User.fromJson(data);
+        return user;
     } catch (e) {
       print('Lỗi: $e');
       throw Exception('Đã xảy ra lỗi: $e');
