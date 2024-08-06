@@ -18,7 +18,7 @@ class UserServices {
       };
 
       var response = await dio.post(
-        "http://localhost:56413/api/UserService/Login",
+        "http://localhost:56413/api/Login",
         data: jsonEncode({
           "userName": userName,
           "password": password,
@@ -52,20 +52,24 @@ class UserServices {
     }
   }
 
-  static Future<User> fetch_User_Informations() async {
+static Future<User?> fetch_User_Informations() async {
     try {
       dio.options.headers = {
         "Accept": "application/json",
         "Content-Type": "application/json"
       };
 
-      var response = await dio.post(
-        "http://localhost:56413/api/userDetail"
-      );
+      var response = await dio.get("http://localhost:56413/api/userDetail");
 
+      if (response.statusCode == 200) {
         Map<String, dynamic> data = response.data;
         User user = User.fromJson(data);
         return user;
+      } else if (response.statusCode == 401 || response.statusCode == 404) {
+        return null;
+      } else {
+        throw Exception('Failed to load user information');
+      }
     } catch (e) {
       print('Lỗi: $e');
       throw Exception('Đã xảy ra lỗi: $e');

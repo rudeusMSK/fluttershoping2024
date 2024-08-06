@@ -1,48 +1,48 @@
 class User {
-  int? idnd;
-  Null tenND;
-  Null hoTenDem;
+  int? iDND;
+  String? tenND;
+  String? hoTenDem;
   String? email;
   String? gioiTinh;
-  Null sdt;
-  Null tuoi;
-  Null matKhau;
+  String? sDT;
+  int? tuoi;
+  String? matKhau;
   String? tenDangNhap;
 
   User(
-      {this.idnd,
+      {this.iDND,
       this.tenND,
       this.hoTenDem,
       this.email,
       this.gioiTinh,
-      this.sdt,
+      this.sDT,
       this.tuoi,
       this.matKhau,
       this.tenDangNhap});
 
   User.fromJson(Map<String, dynamic> json) {
-    idnd = json['idnd'];
-    tenND = json['tenND'];
-    hoTenDem = json['ho_TenDem'];
-    email = json['email'];
-    gioiTinh = json['gioiTinh'];
-    sdt = json['sdt'];
-    tuoi = json['tuoi'];
-    matKhau = json['matKhau'];
-    tenDangNhap = json['tenDangNhap'];
+    iDND = json['IDND'];
+    tenND = json['TenND'];
+    hoTenDem = json['Ho_TenDem'];
+    email = json['Email'];
+    gioiTinh = json['GioiTinh'];
+    sDT = json['SDT'];
+    tuoi = json['Tuoi'];
+    matKhau = json['MatKhau'];
+    tenDangNhap = json['TenDangNhap'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['idnd'] = idnd;
-    data['tenND'] = tenND;
-    data['ho_TenDem'] = hoTenDem;
-    data['email'] = email;
-    data['gioiTinh'] = gioiTinh;
-    data['sdt'] = sdt;
-    data['tuoi'] = tuoi;
-    data['matKhau'] = matKhau;
-    data['tenDangNhap'] = tenDangNhap;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['IDND'] = this.iDND;
+    data['TenND'] = this.tenND;
+    data['Ho_TenDem'] = this.hoTenDem;
+    data['Email'] = this.email;
+    data['GioiTinh'] = this.gioiTinh;
+    data['SDT'] = this.sDT;
+    data['Tuoi'] = this.tuoi;
+    data['MatKhau'] = this.matKhau;
+    data['TenDangNhap'] = this.tenDangNhap;
     return data;
   }
 }

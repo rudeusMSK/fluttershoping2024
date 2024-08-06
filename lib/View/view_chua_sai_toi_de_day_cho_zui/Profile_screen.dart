@@ -1,76 +1,52 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
 
-// ignore: camel_case_types
-class Profile_screen extends StatefulWidget {
-  const Profile_screen({super.key});
-
-  @override
-  State<Profile_screen> createState() => _Main_screenState();
-}
-
-// ignore: camel_case_types
-class _Main_screenState extends State<Profile_screen> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: const CustomAppBar(),
-      body: body(),
-      //bottomNavigationBar: const CustomBottomNavigationBar(),
-      drawer: myDrawer(),
-    );
-  }
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Consumer<UserViewModel>(
+        builder: (context, userViewModel, child) {
+          if (!userViewModel.isUserInitialized) {
+            userViewModel.fetch_User_Informations();
+            return Center(child: CircularProgressIndicator());
+          }
 
-  Widget body() {
-    return const SafeArea(
-      child: Center(
-        child: Text("Profile Screen Body"),
+          if (userViewModel.errorMessage != null) {
+            return Center(child: Text(userViewModel.errorMessage!));
+          }
+
+          final user = userViewModel.user;
+
+          if (user == null) {
+            return Center(child: Text('Không có thông tin người dùng.'));
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Name: ${user.tenDangNhap}', style: TextStyle(fontSize: 20)),
+                SizedBox(height: 10),
+                Text('Email: ${user.email}', style: TextStyle(fontSize: 20)),
+                 SizedBox(height: 10),
+                  Text('Email: ${user.gioiTinh}', style: TextStyle(fontSize: 20)),
+                   SizedBox(height: 10),
+                     Text('Email: ${user.iDND}', style: TextStyle(fontSize: 20)),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
-
-  Drawer myDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 0, 136, 255),
-            ),
-            child: Expanded(
-              child: Row(
-                children: [
-                  const Icon(Icons.add),
-                  ListTile(
-                    title: const Text('Đoạn Chat'),
-                    selected: _selectedIndex == 0,
-                    onTap: () {
-                      _onItemTapped(0);
-                      Navigator.pop(context);
-                    },
-                  ),
-                  const Spacer(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void onClickButton() {}
 }
