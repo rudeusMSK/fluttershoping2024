@@ -1,16 +1,19 @@
 // ignore_for_file: avoid_print, non_constant_identifier_names
-
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:mainpage_detailuser_v1/Model/CookieModel.dart';
 import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
 
 class UserServices {
   static final Dio dio = Dio();
-  static String? cookie;
+  static final CookieJar cookieJar = CookieJar();
 
   static Future<UserCookie?> fetch_User_Account(
       String userName, String password) async {
+    dio.interceptors.add(CookieManager(cookieJar));
+
     try {
       dio.options.headers = {
         "Accept": "application/json",
@@ -18,7 +21,7 @@ class UserServices {
       };
 
       var response = await dio.post(
-        "http://localhost:56413/api/Login",
+        "http://backendflutter2024.somee.com/api/Login",
         data: jsonEncode({
           "userName": userName,
           "password": password,
@@ -33,11 +36,13 @@ class UserServices {
         var token = data['Token'];
         print('Token: $token');
 
-        // Lưu trữ giá trị của set-cookie
-        cookie = response.headers['set-cookie']?.first;
-        print('Cookie: $cookie');
+        // lấy cookies
+        var cookies = await cookieJar.loadForRequest(
+            Uri.parse("http://backendflutter2024.somee.com/api/Login"));
 
-        // Optionally, return any relevant information
+        for (var cookie in cookies) {
+          print('Cookie: ${cookie.name}=${cookie.value}');
+        }
         return UserCookie.fromJson(data);
       } else if (response.statusCode == 404) {
         throw Exception('Tên đăng nhập hoặc mật khẩu không đúng.');
@@ -52,16 +57,19 @@ class UserServices {
     }
   }
 
-static Future<User?> fetch_User_Informations() async {
+  static Future<User?> fetch_User_Informations() async {
+
     try {
       dio.options.headers = {
         "Accept": "application/json",
         "Content-Type": "application/json"
       };
 
-      var response = await dio.get("http://localhost:56413/api/userDetail");
+      var response =
+          await dio.get("http://backendflutter2024.somee.com/api/userDetail");
 
       if (response.statusCode == 200) {
+        print('Response Body: ${response.data}');
         Map<String, dynamic> data = response.data;
         User user = User.fromJson(data);
         return user;

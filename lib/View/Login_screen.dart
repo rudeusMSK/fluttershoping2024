@@ -26,7 +26,6 @@ class Login extends StatelessWidget {
     );
   }
 
-
   _header(context) {
     return const Column(
       children: [
@@ -150,5 +149,4 @@ class Login extends StatelessWidget {
       ],
     );
   }
-
 }

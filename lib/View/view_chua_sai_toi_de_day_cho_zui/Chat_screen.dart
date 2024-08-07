@@ -1,7 +1,5 @@
+// ignore_for_file: camel_case_types
 import 'package:flutter/material.dart';
-// import 'package:mainpage_detailuser_v1/components/app_bar.dart';
-// import 'package:mainpage_detailuser_v1/components/bottom_navigationbar.dart';
-
 class Chat_screen extends StatefulWidget {
   const Chat_screen({super.key});
 
@@ -71,7 +69,6 @@ class _Main_screenState extends State<Chat_screen> {
       ),
     );
   }
-
   void onClickButton() {}
 }
 

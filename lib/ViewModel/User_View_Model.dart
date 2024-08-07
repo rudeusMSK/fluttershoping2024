@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/Model/CookieModel.dart';
 import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
@@ -16,6 +18,7 @@ class UserViewModel extends ChangeNotifier {
       if (fetchedCookie != null) {
         cookie = fetchedCookie;
         print("user: $cookie");
+        
         notifyListeners();
       } else {
         print('Lỗi: Không có dữ liệu trả về từ API.');
@@ -30,7 +33,7 @@ class UserViewModel extends ChangeNotifier {
       user = await UserServices.fetch_User_Informations();
       isUserInitialized = true;
       if (user == null) {
-        errorMessage = 'Hãy đăng nhập';
+        errorMessage = 'chưa đăng nhập kài.';
       }
       notifyListeners();
     } catch (e) {

@@ -1,5 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
-
+// ignore_for_file: non_constant_identifier_names, avoid_print
 import 'package:dio/dio.dart';
 import 'package:mainpage_detailuser_v1/Model/CategoryModel.dart';
 

@@ -1,5 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
-
+// ignore_for_file: non_constant_identifier_names, avoid_print
 import 'package:dio/dio.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/ProductCartItem.dart';
@@ -17,7 +16,7 @@ class ProductServices {
       String get_ = 
       id == 0
         ? "http://backendflutter2024.somee.com/api/ProductCartItem"
-        : "http://localhost:56413/api/ProductByCategory?categoryId=$id";
+        : "http://http://backendflutter2024.somee.com/api/ProductByCategory?categoryId=$id";
 
       Response response = await dio
           .get(get_);

@@ -1,6 +1,5 @@
+// ignore_for_file: camel_case_types
 import 'package:flutter/material.dart';
-
-// ignore: camel_case_types
 class Love_screen extends StatefulWidget {
   const Love_screen({super.key,});
 
