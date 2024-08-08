@@ -33,7 +33,8 @@ class UserViewModel extends ChangeNotifier {
       user = await UserServices.fetch_User_Informations();
       isUserInitialized = true;
       if (user == null) {
-        errorMessage = 'chưa đăng nhập kài.';
+      errorMessage = 'chưa đăng nhập kài.';
+      
       }
       notifyListeners();
     } catch (e) {

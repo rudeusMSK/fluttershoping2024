@@ -10,7 +10,7 @@ class ProductViewModel extends ChangeNotifier {
   late List<ProductCart> productCards = [];
   late Product product;
 
-  void fetch_Product_Card_List(int id) async {
+  Future<void> fetch_Product_Card_List(int id) async {
     productCards = (await ProductServices.fetchProductCardList(id));
     print("product cart: $productCards");
     notifyListeners();

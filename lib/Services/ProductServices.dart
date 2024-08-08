@@ -16,7 +16,7 @@ class ProductServices {
       String get_ = 
       id == 0
         ? "http://backendflutter2024.somee.com/api/ProductCartItem"
-        : "http://http://backendflutter2024.somee.com/api/ProductByCategory?categoryId=$id";
+        : "http://backendflutter2024.somee.com/api/ProductByCategory?categoryId=$id";
 
       Response response = await dio
           .get(get_);
