@@ -3,8 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
+    userViewModel.fetch_User_Informations();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +27,6 @@ class ProfileScreen extends StatelessWidget {
       body: Consumer<UserViewModel>(
         builder: (context, userViewModel, child) {
           if (!userViewModel.isUserInitialized) {
-            userViewModel.fetch_User_Informations();
             return Center(child: CircularProgressIndicator());
           }
 
@@ -34,13 +45,15 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Name: ${user.tenDangNhap}', style: TextStyle(fontSize: 20)),
+                Text('Name: ${user.tenDangNhap}',
+                    style: TextStyle(fontSize: 20)),
                 SizedBox(height: 10),
                 Text('Email: ${user.email}', style: TextStyle(fontSize: 20)),
-                 SizedBox(height: 10),
-                  Text('Email: ${user.gioiTinh}', style: TextStyle(fontSize: 20)),
-                   SizedBox(height: 10),
-                     Text('Email: ${user.iDND}', style: TextStyle(fontSize: 20)),
+                SizedBox(height: 10),
+                Text('Giới tính: ${user.gioiTinh}',
+                    style: TextStyle(fontSize: 20)),
+                SizedBox(height: 10),
+                Text('ID: ${user.iDND}', style: TextStyle(fontSize: 20)),
               ],
             ),
           );
