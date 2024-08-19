@@ -14,13 +14,16 @@ class _LoginBodyState extends State<LoginBody> {
   final UserNameController = TextEditingController();
   final UserPasswordController = TextEditingController();
   UserViewModel userViewModel = UserViewModel();
+
   String TextField_Invalid = '';
-  String Textvalue = "xin chào!\nchúng tôi cần bạn nhập đầy đủ thông tin\nđể thực hiện đăng nhập, chân thành cảm ơn.";
+  String Textvalue =
+      "xin chào!\nchúng tôi cần bạn nhập đầy đủ thông tin\nđể thực hiện đăng nhập, chân thành cảm ơn.";
 
   @override
   void dispose() {
     UserNameController.dispose();
     UserPasswordController.dispose();
+    Textvalue = "";
     super.dispose();
   }
 
@@ -53,13 +56,15 @@ class _LoginBodyState extends State<LoginBody> {
               obscureText: true,
             ),
           ),
-
           if (TextField_Invalid.isNotEmpty)
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
                 TextField_Invalid,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
               ),
             ),
           ElevatedButton(
@@ -75,15 +80,6 @@ class _LoginBodyState extends State<LoginBody> {
             },
             child: const Text('Login'),
           ),
-          // Consumer<UserViewModel>(
-          //   builder: (context, userViewModel, child) {
-          //     if (userViewModel. .isNotEmpty) {
-          //       return Text("Cookies: ${userViewModel.userCookie}");
-          //     } else {
-          //       return const Text("No cookies fetched");
-          //     }
-          //   },
-          // ),
         ],
       ),
     );

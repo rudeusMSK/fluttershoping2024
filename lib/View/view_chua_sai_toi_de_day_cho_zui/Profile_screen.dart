@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,12 +17,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     userViewModel.fetch_User_Informations();
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    // TODO: implement setState
-    super.setState(fn);
+    // if (userViewModel.isUserLoggedIn()) {
+    //   userViewModel.fetch_User_Informations();
+    // } 
+    // else {
+    //   // Chuyển hướng đến màn hình đăng nhập nếu không tìm thấy cookie
+      
+    //   WidgetsBinding.instance.addPostFrameCallback((_) {
+    //     Navigator.pushReplacement(
+    //       context,
+    //       MaterialPageRoute(builder: (context) => LoginBody()),
+    //     );
+    //   });
+    // }
   }
 
   @override
@@ -33,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Consumer<UserViewModel>(
         builder: (context, userViewModel, child) {
           if (!userViewModel.isUserInitialized) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (userViewModel.errorMessage != null) {
@@ -43,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           final user = userViewModel.user;
 
           if (user == null) {
-            return Center(child: Text('Không có thông tin người dùng.'));
+            return const Center(child: Text('Không có thông tin người dùng.'));
           }
 
           return Padding(
@@ -51,15 +59,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Name: ${user.tenDangNhap}',
-                    style: TextStyle(fontSize: 20)),
-                SizedBox(height: 10),
-                Text('Email: ${user.email}', style: TextStyle(fontSize: 20)),
-                SizedBox(height: 10),
+                Text('Tên đăng nhập: ${user.tenDangNhap}',
+                    style: const TextStyle(fontSize: 20)),
+                const SizedBox(height: 10),
+                Text('Email: ${user.email}', style: const TextStyle(fontSize: 20)),
+                const SizedBox(height: 10),
                 Text('Giới tính: ${user.gioiTinh}',
-                    style: TextStyle(fontSize: 20)),
-                SizedBox(height: 10),
-                Text('ID: ${user.iDND}', style: TextStyle(fontSize: 20)),
+                    style: const TextStyle(fontSize: 20)),
+                const SizedBox(height: 10),
+                Text('ID: ${user.iDND}', style: const TextStyle(fontSize: 20)),
               ],
             ),
           );
