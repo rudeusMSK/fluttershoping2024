@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/page/editShipmet.dart';
 

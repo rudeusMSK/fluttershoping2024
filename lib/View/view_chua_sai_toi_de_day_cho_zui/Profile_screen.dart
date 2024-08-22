@@ -17,19 +17,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     userViewModel.fetch_User_Informations();
-    // if (userViewModel.isUserLoggedIn()) {
-    //   userViewModel.fetch_User_Informations();
-    // } 
-    // else {
-    //   // Chuyển hướng đến màn hình đăng nhập nếu không tìm thấy cookie
-      
-    //   WidgetsBinding.instance.addPostFrameCallback((_) {
-    //     Navigator.pushReplacement(
-    //       context,
-    //       MaterialPageRoute(builder: (context) => LoginBody()),
-    //     );
-    //   });
-    // }
   }
 
   @override

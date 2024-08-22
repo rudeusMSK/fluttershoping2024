@@ -1,13 +1,11 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/View/view_chua_sai_toi_de_day_cho_zui/Profile_screen.dart';
 import 'package:mainpage_detailuser_v1/components/app_bar.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/AccountBody.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/LoginBody.dart';
 import 'package:mainpage_detailuser_v1/components/bottom_navigationbar.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/editBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/homeBody.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/loveBody.dart';
 
 class Main_screen extends StatefulWidget {
   final String title;
@@ -39,9 +37,9 @@ class _Main_screenState extends State<Main_screen> {
     List<Widget> bodyItem = [
       HomeBody(), // 0
       editbody(), // 1
-      lovebody(), // 2
-      ProfileScreen(), // 3 test
-      AccountBody(), // 4 test
+      editbody(), // 2
+      editbody(),
+      const LoginBody(), // 4 test
     ];
 
     return Scaffold(
