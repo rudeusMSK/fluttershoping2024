@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/View/ProductDetails_screen.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/Category_View_Model.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/product_view_Model.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/CountdownBody.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/sliderbody.dart';
 import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
@@ -25,12 +27,14 @@ class _HomeBodyState extends State<HomeBody> {
   int selectedCategoryIndex = -1;
   String selectedCategoryName = 'Sản phẩm';
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ChangeNotifierProvider(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          AttendanceScreen(hh: "12", mm: "12", ss: "00"),
+          EnlargeStrategyZoomDemo(),
+          ChangeNotifierProvider(
             create: (context) => categoryViewModel,
             child: Column(
               children: [
@@ -39,11 +43,13 @@ class _HomeBodyState extends State<HomeBody> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: categoryListView(),
                 ),
-                Expanded(
-                  child: ChangeNotifierProvider(
-                    create: (context) => productViewModel,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                ChangeNotifierProvider(
+                  create: (context) => productViewModel,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height -
+                          250, // Adjust the height as needed
                       child: productListView(),
                     ),
                   ),
@@ -51,8 +57,8 @@ class _HomeBodyState extends State<HomeBody> {
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

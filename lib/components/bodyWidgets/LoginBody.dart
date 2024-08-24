@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/CountdownBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/ErrorBody.dart';
+import 'package:mainpage_detailuser_v1/components/dialogWidgets/CookieInvalid_Dialog.dart';
 import 'package:provider/provider.dart';
 
 class LoginBody extends StatefulWidget {
@@ -175,7 +177,7 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   Widget checkStatus(int? repStateCode) {
-    if (repStateCode == null){
+    if (repStateCode == null) {
       return const Center(child: CircularProgressIndicator());
     }
     if (repStateCode == 200) {

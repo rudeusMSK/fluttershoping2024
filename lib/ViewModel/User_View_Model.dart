@@ -7,7 +7,7 @@ import 'package:mainpage_detailuser_v1/Services/UserServices.dart';
 
 class UserViewModel extends ChangeNotifier {
   //String? errorMessage;
-  bool userIsLoading = false; // defaul
+  bool userIsLoading = false, isLogin = false; // defaul
 
   UserCookie? cookie; // cookie idUser-token
   User? user; // user informations
@@ -35,6 +35,8 @@ class UserViewModel extends ChangeNotifier {
         print("user: ${cookie?.userID} - token: ${cookie?.token}");
         // Update StatusCode:
         getStateCode = UserServices.getStatusCode();
+        //
+        isLogin = true;
         // Fetch user information after successful login:
         await fetch_User_Informations();
       }
@@ -66,8 +68,7 @@ class UserViewModel extends ChangeNotifier {
       userIsLoading = true;
       getStateCode = UserServices.getStatusCode();
       notifyListeners();
-    } 
-    catch (e) {
+    } catch (e) {
       //errorMessage = 'Lỗi khi đang fetch_User_Informations tại view: $e';
       //isUserInitialized = true;
       print('Lỗi khi đang fetch_User_Informations tại: $e');

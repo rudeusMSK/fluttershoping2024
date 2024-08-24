@@ -93,6 +93,14 @@ class UserServices {
       print("Cookies sẽ được gửi đi:");
       for (var cookie in cookies) {
         print('Cookie: ${cookie.name}=${cookie.value}');
+        print('Cookie (hạn sử dụng): ${cookie.name}=${cookie.expires}');
+        DateTime now = DateTime.now();
+
+        print(now.hour.toString() +
+            ":" +
+            now.minute.toString() +
+            ":" +
+            now.second.toString());
       }
 
       dio.options.headers = {
