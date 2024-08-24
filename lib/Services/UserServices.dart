@@ -107,16 +107,19 @@ class UserServices {
       print("Response từ API:");
       print("Status Code: ${response.statusCode}");
       print("Headers: ${response.headers}");
-      print("Data: ${response.data}");
+      //print("Data: ${response.data}");
 
       // 200: Oke
       if (response.statusCode == 200) {
-        _statusCode = 200;
+        _statusCode = response.statusCode;
+        print('state code: $_statusCode');
         Map<String, dynamic> data = response.data;
-        print('data: ${response.data}');
+        print('data: $data');
         User user = User.fromJson(data);
         return user;
-      } else {
+      } 
+      else {
+        // khác 200 => trả về user = null
         _statusCode = response.statusCode;
         return null;
       }

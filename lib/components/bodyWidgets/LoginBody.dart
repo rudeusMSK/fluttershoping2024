@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/ErrorBody.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,8 @@ class _LoginBodyState extends State<LoginBody> {
   // user controller:
   UserViewModel userViewModel = UserViewModel();
 
+  int? setStatus;
+
   // Status setup:
   String textFieldInvalid = '',
       //  titleView = 'LOGIN',
@@ -27,6 +30,8 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   void initState() {
     super.initState();
+    // fetch user infor => user detail
+    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     userViewModel.fetch_User_Informations();
   }
 
@@ -92,6 +97,9 @@ class _LoginBodyState extends State<LoginBody> {
             String password = userPasswordController.text.trim();
 
             if (username.isNotEmpty && password.isNotEmpty) {
+              if (!userViewModel.userIsLoading) {
+                const Center(child: CircularProgressIndicator());
+              }
               // Call API login account and wait for the response:
               await Provider.of<UserViewModel>(context, listen: false)
                   .fetch_User_Account(username, password);
@@ -103,9 +111,9 @@ class _LoginBodyState extends State<LoginBody> {
                 // If login is successful, fetch user information:
                 if (Provider.of<UserViewModel>(context, listen: false)
                     .isUserLoggedIn()) {
+                  // get user infor
                   await Provider.of<UserViewModel>(context, listen: false)
                       .fetch_User_Informations();
-                      
                 }
               } else {
                 setState(() {
@@ -113,7 +121,7 @@ class _LoginBodyState extends State<LoginBody> {
                       "Sorry ! StatusCode is ${userViewModel.getStateCode} !";
                 });
               }
-              // xử lý đăng nhập sai thông tin tại đây
+              // xử lý đăng nhập sai thông tin tại view:
             } else {
               setState(() {
                 textFieldInvalid = wanning;
@@ -128,15 +136,15 @@ class _LoginBodyState extends State<LoginBody> {
 
   Widget profileView() {
     return Consumer<UserViewModel>(builder: (context, userViewModel, child) {
-      if (!userViewModel.isUserInitialized) {
+      if (!userViewModel.userIsLoading) {
         return const Center(child: CircularProgressIndicator());
       }
 
-      if (userViewModel.errorMessage != null) {
-        return Center(child: Text(userViewModel.errorMessage!));
-      }
+      // if (userViewModel.errorMessage != null) {
+      //   return Center(child: Text(userViewModel.errorMessage!));
+      // }
 
-      final user = userViewModel.user;
+      User? user = userViewModel.user;
 
       return user == null
           ? const Center(child: Text('Không có thông tin người dùng.'))
@@ -167,6 +175,9 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   Widget checkStatus(int? repStateCode) {
+    if (repStateCode == null){
+      return const Center(child: CircularProgressIndicator());
+    }
     if (repStateCode == 200) {
       return profileView();
     } else if (repStateCode == 500) {

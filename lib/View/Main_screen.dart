@@ -6,6 +6,7 @@ import 'package:mainpage_detailuser_v1/components/bodyWidgets/LoginBody.dart';
 import 'package:mainpage_detailuser_v1/components/bottom_navigationbar.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/editBody.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/homeBody.dart';
+import 'package:mainpage_detailuser_v1/components/dialogWidgets/CookieInvalid_Dialog.dart';
 
 class Main_screen extends StatefulWidget {
   final String title;
@@ -38,7 +39,7 @@ class _Main_screenState extends State<Main_screen> {
       HomeBody(), // 0
       editbody(), // 1
       editbody(), // 2
-      editbody(),
+      const DialogExample(), // 3
       const LoginBody(), // 4 test
     ];
 

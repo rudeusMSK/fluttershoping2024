@@ -27,13 +27,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       body: Consumer<UserViewModel>(
         builder: (context, userViewModel, child) {
-          if (!userViewModel.isUserInitialized) {
+          if (!userViewModel.userIsLoading) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if (userViewModel.errorMessage != null) {
-            return Center(child: Text(userViewModel.errorMessage!));
-          }
+          // if (userViewModel.errorMessage != null) {
+          //   return Center(child: Text(userViewModel.errorMessage!));
+          // }
 
           final user = userViewModel.user;
 
