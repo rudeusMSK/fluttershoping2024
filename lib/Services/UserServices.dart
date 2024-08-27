@@ -108,7 +108,7 @@ class UserServices {
       };
 
       var response =
-          await dio.get(ApiUrls.getPorductDetail);
+          await dio.get(ApiUrls.getUserDetail);
 
       // In response trả về từ API
       print("Response từ API:");

@@ -6,9 +6,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Trang Chủ'),
+      //title: const Text('Trang Chủ'),
       centerTitle: true,
-      backgroundColor: const Color.fromARGB(255, 42, 222, 225),
     );
   }
 // cheo xin -> xin cheo

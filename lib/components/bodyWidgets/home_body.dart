@@ -37,29 +37,44 @@ class HomeBodyState extends State<HomeBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            slideShow(),
             ChangeNotifierProvider(
               create: (context) => categoryViewModel,
               child: Column(
                 children: [
-                  productTitle(),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: categoryListView(),
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: productTitle(),
                   ),
-                  AttendanceScreen(
-                      hh: productViewModel.timeSale.hh.toString(),
-                      mm: productViewModel.timeSale.mm.toString(),
-                      ss: productViewModel.timeSale.ss.toString()),
-                  const EnlargeStrategyZoomDemo(),
+                  categoryListView(),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: productListView(),
-            ),
+            productListView(),
+            // demo:
+            productListView(),
+            productListView(),
+            productListView(),
+            productListView(),
           ],
         ),
+      ),
+    );
+  }
+
+// count down - slideshow:
+  Widget slideShow() {
+    return Container(
+      margin: //const EdgeInsets.symmetric(horizontal: 16),
+          const EdgeInsets.fromLTRB(16, 0, 16, 10),
+      child: Column(
+        children: [
+          AttendanceScreen(
+              hh: productViewModel.timeSale.hh.toString(),
+              mm: productViewModel.timeSale.mm.toString(),
+              ss: productViewModel.timeSale.ss.toString()),
+          const EnlargeStrategyZoomDemo(),
+        ],
       ),
     );
   }
@@ -87,8 +102,8 @@ class HomeBodyState extends State<HomeBody> {
   Widget categoryListView() {
     return Consumer<CategoryViewModel>(
       builder: (context, viewModel, child) {
-        return Container(
-          height: 60,
+        return SizedBox(
+          height: 90,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.categorys.length,
@@ -109,15 +124,19 @@ class HomeBodyState extends State<HomeBody> {
                       duration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
+                      margin: const EdgeInsets.only(bottom: 20),
+                      // borderRadius: BorderRadius.circular(12),
                       decoration: BoxDecoration(
                         color: selectedCategoryIndex == index
                             ? const Color(0xFF69BDFC)
                             : const Color(0xFFD9D9D9),
                         shape: BoxShape.circle,
+                        
                       ),
                       child: Center(
                         child: Text(
                           category.tenLoai.toString(),
+                          overflow: TextOverflow.clip,
                           style: const TextStyle(
                             fontSize: 12,
                           ),
@@ -165,29 +184,57 @@ class HomeBodyState extends State<HomeBody> {
                     ),
                   );
                 },
-                child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                   child: Column(
                     children: [
-                      product.imgUrl != null
-                          ? Image.network(
-                              ImageUrls.imageSrc + product.imgUrl.toString(),
-                              width: 120,
-                              height: 120, errorBuilder: (BuildContext context,
-                                  Object exception, StackTrace? stackTrace) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            })
-                          : Text(
-                              ImageUrls.imageSrc + product.imgUrl.toString(),
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                      Text(
-                        product.tenSP ?? "sp này hôk có tên á",
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                      Card(
+                        child: product.imgUrl != null
+                            ? Image.network(
+                                ImageUrls.imageSrc + product.imgUrl.toString(),
+                                width: 120,
+                                height: 120, errorBuilder:
+                                    (BuildContext context, Object exception,
+                                        StackTrace? stackTrace) {
+                                return const Center(
+                                    child: Padding(
+                                  padding: EdgeInsets.all(40),
+                                  child: CircularProgressIndicator(),
+                                ));
+                              })
+                            : Text(
+                                ImageUrls.imageSrc + product.imgUrl.toString(),
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
                       ),
-                      Text('Giá: ${product.giaBan} Đ'),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              product.tenSP ?? "sp này hôk có tên á",
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Color(0xFF152354),
+                                fontSize: 14,
+                                // fontWeight: FontWeight.bold
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            Text(
+                              'Giá: ${product.giaBan} Đ',
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  color: Color(0xFF152354),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

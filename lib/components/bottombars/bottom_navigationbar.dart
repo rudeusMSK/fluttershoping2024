@@ -35,38 +35,40 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0), // or 15.0 - 20.0
+    return Container(
+      padding:const EdgeInsets.all(10.0), // or 15.0 - 20.0
+      margin: const EdgeInsets.only(bottom: 10.0),
       child: ClipRRect(
         borderRadius: const BorderRadius.all(
           Radius.circular(20.0),
         ),
         child: BottomNavigationBar(
+          showUnselectedLabels: false,
           items: <BottomNavigationBarItem>[
             // home = 0
             BottomNavigationBarItem(
               icon: _buildIcon('lib/assets/icons/bottombar/Home.png', 0),
-              label: 'Trang Chủ',
+              label: "", //'Trang Chủ',
             ),
             // edit = 1
             BottomNavigationBarItem(
               icon: _buildIcon('lib/assets/icons/bottombar/Edit.png', 1),
-              label: 'tìm kiếm',
+              label: "",//'tìm kiếm',
             ),
             // love = 2
             BottomNavigationBarItem(
               icon: _buildIcon('lib/assets/icons/bottombar/Love.png', 2),
-              label: 'tym💕',
+              label: "", //'tym💕',
             ),
             // chat = 3
             BottomNavigationBarItem(
               icon: _buildIcon('lib/assets/icons/bottombar/Chat.png', 3),
-              label: 'đánh giá',
+              label: "", //'đánh giá',
             ),
             // profile = 4
             BottomNavigationBarItem(
               icon: _buildIcon('lib/assets/icons/bottombar/Profile.png', 4),
-              label: 'Thông tin',
+              label: "", //'Thông tin',
             ),
           ],
           backgroundColor: const Color(0xFF152354),
