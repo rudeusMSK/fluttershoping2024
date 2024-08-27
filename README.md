@@ -158,7 +158,7 @@ delay !
   </summary>
 <br>
   
-  <img src="https://github.com/rudeusMSK/TeamFlutter_Demo2024/assets/160387470/9f732fc3-c9d8-4643-8f30-1cc25ebe043f" width="600"/>
+  <img src="https://github.com/user-attachments/assets/a63eb844-d351-4c1a-bf08-b78a87b9aa26" width="600"/>
 
 ---
 
