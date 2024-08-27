@@ -191,7 +191,8 @@ class HomeBodyState extends State<HomeBody> {
                       Card(
                         child: product.imgUrl != null
                             ? Image.network(
-                                ImageUrls.imageSrc + product.imgUrl.toString(),
+                               // ImageUrls.imageSrc + product.imgUrl.toString(),
+                                "http://backendflutter2024.somee.com/public/imgs/G1.png",
                                 width: 120,
                                 height: 120, errorBuilder:
                                     (BuildContext context, Object exception,
