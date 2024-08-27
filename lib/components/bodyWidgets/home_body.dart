@@ -31,38 +31,35 @@ class HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ChangeNotifierProvider(
-            create: (context) => categoryViewModel,
-            child: Column(
-              children: [
-                productTitle(),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: categoryListView(),
-                ),
-                AttendanceScreen(
-                    hh: productViewModel.timeSale.hh.toString(),
-                    mm: productViewModel.timeSale.mm.toString(),
-                    ss: productViewModel.timeSale.ss.toString()),
-                const EnlargeStrategyZoomDemo(),
-                ChangeNotifierProvider(
-                  create: (context) => productViewModel,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height -
-                          250, // Adjust the height as needed
-                      child: productListView(),
-                    ),
+    return ChangeNotifierProvider(
+      create: (context) => productViewModel,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ChangeNotifierProvider(
+              create: (context) => categoryViewModel,
+              child: Column(
+                children: [
+                  productTitle(),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: categoryListView(),
                   ),
-                ),
-              ],
+                  AttendanceScreen(
+                      hh: productViewModel.timeSale.hh.toString(),
+                      mm: productViewModel.timeSale.mm.toString(),
+                      ss: productViewModel.timeSale.ss.toString()),
+                  const EnlargeStrategyZoomDemo(),
+                ],
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: productListView(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -86,12 +83,11 @@ class HomeBodyState extends State<HomeBody> {
     );
   }
 
-// Category Items :
+// Category Items:
   Widget categoryListView() {
     return Consumer<CategoryViewModel>(
       builder: (context, viewModel, child) {
         return Container(
-          //margin: const EdgeInsets.symmetric(vertical: 10),
           height: 60,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -109,30 +105,22 @@ class HomeBodyState extends State<HomeBody> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Animation transfer delay: 0,5s -⁠ ฅ^•ﻌ•^ฅ
                     AnimatedContainer(
-                      duration: const Duration(
-                          milliseconds: 200), // Recommended:  0,3 - 0,5
-
-                      //padding: const EdgeInsets.all(2),
-                      //margin: const EdgeInsets.all(1),
-
+                      duration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
-
                       decoration: BoxDecoration(
                         color: selectedCategoryIndex == index
                             ? const Color(0xFF69BDFC)
                             : const Color(0xFFD9D9D9),
                         shape: BoxShape.circle,
                       ),
-
                       child: Center(
                         child: Text(
                           category.tenLoai.toString(),
                           style: const TextStyle(
                             fontSize: 12,
-                          ) ,
+                          ),
                         ),
                       ),
                     ),
@@ -155,10 +143,12 @@ class HomeBodyState extends State<HomeBody> {
         } else {
           return GridView.builder(
             physics:
-            const NeverScrollableScrollPhysics(),
+                const NeverScrollableScrollPhysics(), // Prevent GridView from scrolling
+            shrinkWrap:
+                true, // Allows GridView to expand within the SingleChildScrollView
             itemCount: viewModel.productCards.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 2, // 2 columns as per your design
               childAspectRatio: 4 / 5,
             ),
             itemBuilder: (context, index) {
