@@ -16,7 +16,13 @@ class ProductDetailPageState extends State<ProductDetailPage> {
   int currentImageIndex = 0;
 
   late String productDescription;
-  late List<String> productImages = [];
+  late List<String> productImages = [
+    "http://backendflutter2024.somee.com/public/imgs/g1.png",
+    "http://backendflutter2024.somee.com/public/imgs/g2.png",
+    "http://backendflutter2024.somee.com/public/imgs/g3.png",
+    "http://backendflutter2024.somee.com/public/imgs/g4.png",
+    "http://backendflutter2024.somee.com/public/imgs/g5.png",
+  ];
   late Future<Product> productDetailFuture;
 
   ProductViewModel productViewModel = ProductViewModel();
@@ -58,14 +64,16 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            productImages.isNotEmpty
-                                ? productImages[currentImageIndex]
-                                : '',
-                            width: double.infinity,
-                            height: 240,
-                            fit: BoxFit.cover,
-                          ),
+                          productImages.isNotEmpty
+                          ? Image.network(
+                                  productImages[currentImageIndex],
+                          errorBuilder: (context, error, stackTrace) => const Center(
+                          child: CircularProgressIndicator()),
+                          width: double.infinity,
+                          height: 240,
+                          fit: BoxFit.cover,
+                          )
+                          : const Text("Không tìm thấy hình"),
                           const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,

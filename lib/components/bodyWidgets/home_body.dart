@@ -190,14 +190,16 @@ class HomeBodyState extends State<HomeBody> {
                           ? Image.network(
                               // link Src + {*.png, *.jpg}
                               ImageUrls.imageSrc + product.imgUrl.toString(),
-                              width: 120,
-                              height: 120, errorBuilder: (BuildContext context,
+                              errorBuilder: (BuildContext context,
                                   Object exception, StackTrace? stackTrace) {
                               return const Center(
                                   child: CircularProgressIndicator());
-                            })
+                            },
+                              width: 120,
+                              height: 120,
+                            )
                           : Text(
-                              ImageUrls.imageSrc + product.imgUrl.toString(),
+                              product.imgUrl.toString(),
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
