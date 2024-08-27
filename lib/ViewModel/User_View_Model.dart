@@ -1,13 +1,14 @@
 // ignore_for_file: avoid_print, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/Model/CookieModel.dart';
-import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
+import 'package:mainpage_detailuser_v1/Model/Users/CookieModel.dart';
+import 'package:mainpage_detailuser_v1/Model/Users/UserModel.dart';
 import 'package:mainpage_detailuser_v1/Services/UserServices.dart';
 
 class UserViewModel extends ChangeNotifier {
   //String? errorMessage;
-  bool userIsLoading = false, isLogin = false; // defaul
+  bool userIsLoading = false; 
+  bool isLogin = false; // defaul
 
   UserCookie? cookie; // cookie idUser-token
   User? user; // user informations
@@ -27,7 +28,7 @@ class UserViewModel extends ChangeNotifier {
     try {
       // fetch user Cookie:
       var fetchedCookie =
-          await UserServices.fetch_User_Account(username, password);
+          await UserServices.fetchUserAccount(username, password);
       userIsLoading = true;
       // Check cookie:
       if (fetchedCookie != null) {
@@ -36,7 +37,7 @@ class UserViewModel extends ChangeNotifier {
         // Update StatusCode:
         getStateCode = UserServices.getStatusCode();
         //
-        isLogin = true;
+        //isLogin = true;
         // Fetch user information after successful login:
         await fetch_User_Informations();
       }
@@ -63,7 +64,7 @@ class UserViewModel extends ChangeNotifier {
   Future<void> fetch_User_Informations() async {
     try {
       //Get user infor:
-      user = await UserServices.fetch_User_Informations();
+      user = await UserServices.fetchUserInformations();
       // loading... is success => Update StatusCode.
       userIsLoading = true;
       getStateCode = UserServices.getStatusCode();

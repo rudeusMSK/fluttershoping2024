@@ -1,7 +1,9 @@
-// ignore_for_file: non_constant_identifier_names, avoid_print
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/ProductCartItem.dart';
+import 'package:mainpage_detailuser_v1/Services/API/api_Url.dart';
 
 class ProductServices {
   static Future<List<ProductCart>> fetchProductCardList(int id) async {
@@ -13,13 +15,13 @@ class ProductServices {
         "Content-Type": "application/json"
       };
 
-      String get_ = 
-      id == 0
-        ? "http://backendflutter2024.somee.com/api/ProductCartItem"
-        : "http://backendflutter2024.somee.com/api/ProductByCategory?categoryId=$id";
+      String get_ = id == 0
+          ? ApiUrls.getListProductCartItem
+          : ApiUrls.getListProducByCategory + id.toString();
 
-      Response response = await dio
-          .get(get_);
+      print(get_);
+
+      Response response = await dio.get(get_);
 
       List<dynamic> data = response.data;
       List<ProductCart> productCardList =
@@ -31,7 +33,7 @@ class ProductServices {
     }
   }
 
-  static Future<Product> fetch_Product_Details(int? id) async {
+  static Future<Product> fetchProductDetails(int? id) async {
     try {
       final Dio dio = Dio();
       dio.options.headers = {
@@ -39,8 +41,10 @@ class ProductServices {
         "Content-Type": "application/json"
       };
 
-      Response response = await dio
-          .get('http://backendflutter2024.somee.com/api/DetailProduct?id=$id');
+      Response response =
+          await dio.get(ApiUrls.getPorductDetail + id.toString());
+
+      print(ApiUrls.getPorductDetail + id.toString());
 
       Map<String, dynamic> data = response.data;
       Product product = Product.fromJson(data);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/components/appbars/app_bar.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/User_body.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/user_body.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/edit_body.dart';
 import 'package:mainpage_detailuser_v1/components/bodyWidgets/home_body.dart';
 import 'package:mainpage_detailuser_v1/components/bottombars/bottom_navigationbar.dart';
@@ -32,7 +32,7 @@ class MainScreenState extends State<MainScreen> {
       editbody(), // 1
       editbody(), // 2
       editbody(), // 3
-      const UserBody(), // 4
+      const UserBody(), // 4s
     ];
 
     return Scaffold(

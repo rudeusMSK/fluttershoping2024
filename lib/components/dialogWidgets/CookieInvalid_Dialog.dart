@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/LoginBody.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/user_body.dart';
 
 Widget showSessionExpiredDialog(BuildContext context) {
   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -18,7 +18,7 @@ Widget showSessionExpiredDialog(BuildContext context) {
                 UserViewModel userViewModel = UserViewModel();
                 userViewModel.isLogin == true;
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => LoginBody()),
+                  MaterialPageRoute(builder: (context) => const UserBody()),
                 );
               },
               child: const Text('OK'),

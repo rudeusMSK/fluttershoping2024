@@ -45,27 +45,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
           items: <BottomNavigationBarItem>[
             // home = 0
             BottomNavigationBarItem(
-              icon: _buildIcon('lib/public/icons/Home.png', 0),
+              icon: _buildIcon('lib/assets/icons/bottombar/Home.png', 0),
               label: 'Trang Chủ',
             ),
             // edit = 1
             BottomNavigationBarItem(
-              icon: _buildIcon('lib/public/icons/Edit.png', 1),
+              icon: _buildIcon('lib/assets/icons/bottombar/Edit.png', 1),
               label: 'tìm kiếm',
             ),
             // love = 2
             BottomNavigationBarItem(
-              icon: _buildIcon('lib/public/icons/Love.png', 2),
+              icon: _buildIcon('lib/assets/icons/bottombar/Love.png', 2),
               label: 'tym💕',
             ),
             // chat = 3
             BottomNavigationBarItem(
-              icon: _buildIcon('lib/public/icons/Chat.png', 3),
+              icon: _buildIcon('lib/assets/icons/bottombar/Chat.png', 3),
               label: 'đánh giá',
             ),
             // profile = 4
             BottomNavigationBarItem(
-              icon: _buildIcon('lib/public/icons/Profile.png', 4),
+              icon: _buildIcon('lib/assets/icons/bottombar/Profile.png', 4),
               label: 'Thông tin',
             ),
           ],
@@ -76,7 +76,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           selectedIconTheme: const IconThemeData(
             color: Colors.amber,
           ),
-          // icon select:
+          // icon Unselect:
           unselectedIconTheme: const IconThemeData(
             color: Colors.white,
           ),

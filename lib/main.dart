@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:mainpage_detailuser_v1/View/Main_screen.dart';
+import 'package:mainpage_detailuser_v1/View/mainscreen.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Main_screen(title: 'Trang Chủ'),
+      home: const MainScreen(title: 'Trang Chủ'),
     );
   }
 }

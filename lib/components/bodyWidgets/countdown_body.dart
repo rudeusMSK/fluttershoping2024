@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class AttendanceScreen extends StatefulWidget {
@@ -9,33 +6,37 @@ class AttendanceScreen extends StatefulWidget {
   final String mm;
   final String ss;
 
-  AttendanceScreen({required this.hh, required this.mm, required this.ss});
+  const AttendanceScreen({super.key, required this.hh, required this.mm, required this.ss});
 
   @override
-  _AttendanceScreenState createState() => _AttendanceScreenState();
+  AttendanceScreenState createState() => AttendanceScreenState();
 }
 
-class _AttendanceScreenState extends State<AttendanceScreen> {
-  //static var countdownDuration = Duration(minutes: 10);
+class AttendanceScreenState extends State<AttendanceScreen> {
+  
   static var countdownDuration1 = const Duration(minutes: 10);
-  //Duration duration = Duration();
+  
   Duration duration1 = const Duration();
   Timer? timer;
   Timer? timer1;
+  
   bool countDown = true;
   bool countDown1 = true;
 
   @override
   void initState() {
-
-    var hours1;
-    var mints1;
-    var secs1;
+    
+    int hours1, mints1, secs1;
     hours1 = int.parse(widget.hh);
     mints1 = int.parse(widget.mm);
-    secs1 = int.parse(widget.ss);
-    countdownDuration1 =
-        Duration(hours: hours1, minutes: mints1, seconds: secs1);
+    secs1  = int.parse(widget.ss);
+    
+    countdownDuration1 = Duration(
+      hours: hours1,
+      minutes: mints1,
+      seconds: secs1
+    );
+
     startTimer1();
     reset1();
     super.initState();
@@ -43,10 +44,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
-    //color: Color.fromARGB(255, 255, 255, 255), // Đặt màu nền cho toàn bộ Container
-    child: Column(
+    return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -64,8 +62,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
         ],
       ),
     ],
-      ),
-    );
+      );
 }
 
 
@@ -82,7 +79,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   }
 
   void addTime1() {
-    final addSeconds = 1;
+    const addSeconds = 1;
     setState(() {
       final seconds = duration1.inSeconds - addSeconds;
       if (seconds < 0) {
@@ -104,15 +101,15 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween, 
       children: [
         buildTimeCard(time: hours, header: 'HOURS'),
-         SizedBox(
+         const SizedBox(
           width: 8,
         ),
         buildTimeCard(time: minutes, header: 'MINUTES'),
-         SizedBox(
+         const SizedBox(
           width: 8,
         ),
         buildTimeCard(time: seconds, header: 'SECONDS'),
-         SizedBox(
+         const SizedBox(
           width: 8,
         ),
       ]),
@@ -126,7 +123,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              //  color: Colors.white,
             borderRadius: BorderRadius.circular(20)),
             child: Text(
               time,

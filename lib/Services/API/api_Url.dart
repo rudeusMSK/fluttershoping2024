@@ -1,13 +1,25 @@
-// ignore_for_file: constant_identifier_names
 class ApiUrls {
   // local:
-  static const String GET_Product = 'http://localhost:60056/api/ProductAPI';
-  static const String GET_ProductImage =
-      'http://localhost:60056/api/ImageProductAPI/';
+  // static const String getProduct = 'http://localhost:60056/api/ProductAPI';
+  // static const String getProductImage = 'http://localhost:60056/api/ImageProductAPI/';
 
   // local Services:
-  static const String GET_UserCookie = "http://localhost:60056/api/UserServices/Login";
+  // static const String getUserCookie = "http://localhost:60056/api/UserServices/Login";
 
   // hosting:
-  static const String GET_ProductCartItem = 'http://localhost:60056/api/ProductServices/GetProductCart/';
+  static const String getListCategory =
+      "http://backendflutter2024.somee.com/api/CategoryDTO";
+  static const String getListProductCartItem =
+      "http://backendflutter2024.somee.com/api/ProductCartItem";
+  static const String getListProducByCategory =
+      "http://backendflutter2024.somee.com/api/ProductByCategory?categoryId=";
+  static const String getPorductDetail =
+      'http://backendflutter2024.somee.com/api/DetailProduct?id=';
+
+  //
+  static const String postUserLogin =
+      "http://backendflutter2024.somee.com/api/Login";
+
+  static const String getUserDetail =
+      "http://backendflutter2024.somee.com/api/userDetail";
 }

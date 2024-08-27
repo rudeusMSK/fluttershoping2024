@@ -1,13 +1,15 @@
-// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
+// ignore_for_file: avoid_print
 
 import 'dart:convert';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:mainpage_detailuser_v1/Services/API/api_Url.dart';
 import 'package:path_provider/path_provider.dart'; // Import thư viện để lấy đường dẫn lưu trữ
-import 'package:mainpage_detailuser_v1/Model/CookieModel.dart';
-import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
+import 'package:mainpage_detailuser_v1/Model/Users/CookieModel.dart';
+import 'package:mainpage_detailuser_v1/Model/Users/UserModel.dart';
 import 'dart:io';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as p;
 
 class UserServices {
@@ -34,7 +36,7 @@ class UserServices {
     }
   }
 
-  static Future<UserCookie?> fetch_User_Account(
+  static Future<UserCookie?> fetchUserAccount(
       String userName, String password) async {
     await _initCookieJar(); // Khởi tạo cookie jar
 
@@ -42,8 +44,9 @@ class UserServices {
     await _cookieJar!.deleteAll();
 
     try {
+      // Post:
       var response = await dio.post(
-        "http://backendflutter2024.somee.com/api/Login",
+        ApiUrls.postUserLogin,
         data: jsonEncode({
           "userName": userName,
           "password": password,
@@ -52,7 +55,7 @@ class UserServices {
 
       // Kiểm tra cookie trước khi gửi yêu cầu
       var cookies = await _cookieJar!.loadForRequest(
-          Uri.parse("http://backendflutter2024.somee.com/api/Login"));
+          Uri.parse(ApiUrls.postUserLogin));
 
       print("Cookies sẽ được gửi đi:");
       for (var cookie in cookies) {
@@ -82,13 +85,13 @@ class UserServices {
     }
   }
 
-  static Future<User?> fetch_User_Informations() async {
+  static Future<User?> fetchUserInformations() async {
     await _initCookieJar(); // Khởi tạo cookie jar
 
     try {
       // Kiểm tra cookie trước khi gửi yêu cầu
       var cookies = await _cookieJar!.loadForRequest(
-          Uri.parse("http://backendflutter2024.somee.com/api/userDetail"));
+          Uri.parse(ApiUrls.getPorductDetail));
 
       print("Cookies sẽ được gửi đi:");
       for (var cookie in cookies) {
@@ -96,11 +99,7 @@ class UserServices {
         print('Cookie (hạn sử dụng): ${cookie.name}=${cookie.expires}');
         DateTime now = DateTime.now();
 
-        print(now.hour.toString() +
-            ":" +
-            now.minute.toString() +
-            ":" +
-            now.second.toString());
+        print("${now.hour}:${now.minute}:${now.second}");
       }
 
       dio.options.headers = {
@@ -109,7 +108,7 @@ class UserServices {
       };
 
       var response =
-          await dio.get("http://backendflutter2024.somee.com/api/userDetail");
+          await dio.get(ApiUrls.getPorductDetail);
 
       // In response trả về từ API
       print("Response từ API:");

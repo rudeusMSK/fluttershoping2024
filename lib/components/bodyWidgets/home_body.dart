@@ -1,39 +1,39 @@
-// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/View/ProductDetails_screen.dart';
+import 'package:mainpage_detailuser_v1/Services/API/backendImages_Url.dart';
+import 'package:mainpage_detailuser_v1/View/productDetails_screen.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/Category_View_Model.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/product_view_Model.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/CountdownBody.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/sliderbody.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/countdown_body.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/slider_body.dart';
 import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
+  const HomeBody({super.key});
+
   @override
-  _HomeBodyState createState() => _HomeBodyState();
+  HomeBodyState createState() => HomeBodyState();
 }
 
-class _HomeBodyState extends State<HomeBody> {
+class HomeBodyState extends State<HomeBody> {
   CategoryViewModel categoryViewModel = CategoryViewModel();
   ProductViewModel productViewModel = ProductViewModel();
 
   @override
   void initState() {
+    categoryViewModel.fetchListCategory();
+    productViewModel.fetchProductCardList(0);
+    productViewModel.fetchTimeSaler();
     super.initState();
-    categoryViewModel.fetch_List_Category();
-    productViewModel.fetch_Product_Card_List(0);
-
   }
 
   int selectedCategoryIndex = -1;
   String selectedCategoryName = 'Sản phẩm';
 
- @override
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          AttendanceScreen(hh: "12", mm: "12", ss: "00"),
-          EnlargeStrategyZoomDemo(),
           ChangeNotifierProvider(
             create: (context) => categoryViewModel,
             child: Column(
@@ -43,6 +43,11 @@ class _HomeBodyState extends State<HomeBody> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: categoryListView(),
                 ),
+                AttendanceScreen(
+                    hh: productViewModel.timeSale.hh.toString(),
+                    mm: productViewModel.timeSale.mm.toString(),
+                    ss: productViewModel.timeSale.ss.toString()),
+                const EnlargeStrategyZoomDemo(),
                 ChangeNotifierProvider(
                   create: (context) => productViewModel,
                   child: Padding(
@@ -86,8 +91,8 @@ class _HomeBodyState extends State<HomeBody> {
     return Consumer<CategoryViewModel>(
       builder: (context, viewModel, child) {
         return Container(
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          height: 80,
+          //margin: const EdgeInsets.symmetric(vertical: 10),
+          height: 60,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.categorys.length,
@@ -98,8 +103,7 @@ class _HomeBodyState extends State<HomeBody> {
                   setState(() {
                     selectedCategoryIndex = index;
                     selectedCategoryName = category.tenLoai ?? 'Sản phẩm';
-                    productViewModel
-                        .fetch_Product_Card_List(category.iDLoai ?? 0);
+                    productViewModel.fetchProductCardList(category.iDLoai ?? 0);
                   });
                 },
                 child: Row(
@@ -110,8 +114,8 @@ class _HomeBodyState extends State<HomeBody> {
                       duration: const Duration(
                           milliseconds: 200), // Recommended:  0,3 - 0,5
 
-                      padding: const EdgeInsets.all(10),
-                      margin: const EdgeInsets.all(2),
+                      //padding: const EdgeInsets.all(2),
+                      //margin: const EdgeInsets.all(1),
 
                       width: 100,
                       height: 100,
@@ -126,6 +130,9 @@ class _HomeBodyState extends State<HomeBody> {
                       child: Center(
                         child: Text(
                           category.tenLoai.toString(),
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ) ,
                         ),
                       ),
                     ),
@@ -177,10 +184,12 @@ class _HomeBodyState extends State<HomeBody> {
                 child: Card(
                   child: Column(
                     children: [
+
                       // Img product:
                       product.imgUrl != null
                           ? Image.network(
-                              "http://backendflutter2024.somee.com/public/imgs/${product.imgUrl.toString()}",
+                              // link Src + {*.png, *.jpg}
+                              ImageUrls.imageSrc + product.imgUrl.toString(),
                               width: 120,
                               height: 120, errorBuilder: (BuildContext context,
                                   Object exception, StackTrace? stackTrace) {
@@ -188,16 +197,18 @@ class _HomeBodyState extends State<HomeBody> {
                                   child: CircularProgressIndicator());
                             })
                           : Text(
-                              "http://backendflutter2024.somee.com/public/imgs/${product.imgUrl.toString()}",
+                              ImageUrls.imageSrc + product.imgUrl.toString(),
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
+
                       // Name Product:
                       Text(
                         product.tenSP ?? "sp này hôk có tên á",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
+                      
                       // Price Product:
                       Text(
                         'Giá: ${product.giaBan} Đ',

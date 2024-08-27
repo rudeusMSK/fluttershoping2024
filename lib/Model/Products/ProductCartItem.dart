@@ -1,4 +1,3 @@
-// ignore: file_names
 class ProductCart {
   int? iDSP;
   String? tenSP;

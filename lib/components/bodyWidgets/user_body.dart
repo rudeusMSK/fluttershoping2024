@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/Model/UserModel.dart';
+import 'package:mainpage_detailuser_v1/Model/Users/UserModel.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/CountdownBody.dart';
-import 'package:mainpage_detailuser_v1/components/bodyWidgets/ErrorBody.dart';
-import 'package:mainpage_detailuser_v1/components/dialogWidgets/CookieInvalid_Dialog.dart';
+import 'package:mainpage_detailuser_v1/components/bodyWidgets/error_body.dart';
 import 'package:provider/provider.dart';
 
-class LoginBody extends StatefulWidget {
-  const LoginBody({super.key});
+class UserBody extends StatefulWidget {
+  const UserBody({super.key});
 
   @override
-  State<LoginBody> createState() => _LoginBodyState();
+  State<UserBody> createState() => LoginBodyState();
 }
 
-class _LoginBodyState extends State<LoginBody> {
+class LoginBodyState extends State<UserBody> {
   // textfield controller:
   final userNameController = TextEditingController();
   final userPasswordController = TextEditingController();
@@ -21,20 +19,17 @@ class _LoginBodyState extends State<LoginBody> {
   // user controller:
   UserViewModel userViewModel = UserViewModel();
 
-  int? setStatus;
-
   // Status setup:
   String textFieldInvalid = '',
-      //  titleView = 'LOGIN',
-      wanning =
+          wanning =
           "xin chào!\nchúng tôi cần bạn nhập đầy đủ thông tin\nđể thực hiện đăng nhập, chân thành cảm ơn.";
 
   @override
   void initState() {
-    super.initState();
     // fetch user infor => user detail
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     userViewModel.fetch_User_Informations();
+    super.initState();
   }
 
   @override
@@ -48,9 +43,7 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          //  title: Text(titleView),
-          ),
+      appBar: AppBar(),
       body: Consumer<UserViewModel>(
         builder: (context, userViewModel, child) {
           return checkStatus(userViewModel.getStateCode);
@@ -142,10 +135,6 @@ class _LoginBodyState extends State<LoginBody> {
         return const Center(child: CircularProgressIndicator());
       }
 
-      // if (userViewModel.errorMessage != null) {
-      //   return Center(child: Text(userViewModel.errorMessage!));
-      // }
-
       User? user = userViewModel.user;
 
       return user == null
@@ -183,7 +172,7 @@ class _LoginBodyState extends State<LoginBody> {
     if (repStateCode == 200) {
       return profileView();
     } else if (repStateCode == 500) {
-      return Errbody(repStateCode);
+      return errbody(repStateCode);
     } else {
       return loginView();
     }

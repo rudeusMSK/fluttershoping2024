@@ -67,17 +67,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - lib/public/icons/Chat.png
-  - lib/public/icons/Edit.png
-  - lib/public/icons/Love.png
-  - lib/public/icons/Profile.png
-  - lib/public/icons/Home.png
-  - lib\public\icons\category\Adidas.png
-  - lib\public\icons\category\All.png
-  - lib\public\icons\category\Fila.png
-  - lib\public\icons\category\Nike.png
-  - lib\public\icons\category\Puna.png
-  - lib/public/imgs/Kurumi.png
+  - lib/assets/icons/bottombar/Chat.png
+  - lib/assets/icons/bottombar/Edit.png
+  - lib/assets/icons/bottombar/Home.png
+  - lib/assets/icons/bottombar/Love.png
+  - lib/assets/icons/bottombar/Profile.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

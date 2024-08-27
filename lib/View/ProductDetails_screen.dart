@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/Model/Products/Product.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/product_view_Model.dart';
@@ -10,10 +8,10 @@ class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key, required this.id});
 
   @override
-  _ProductDetailPageState createState() => _ProductDetailPageState();
+  ProductDetailPageState createState() => ProductDetailPageState();
 }
 
-class _ProductDetailPageState extends State<ProductDetailPage> {
+class ProductDetailPageState extends State<ProductDetailPage> {
   bool isFavorite = false;
   int currentImageIndex = 0;
 
@@ -32,7 +30,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   @override
   void initState() {
     super.initState();
-    productDetailFuture = productViewModel.fetch_Product_Details(widget.id);
+    productDetailFuture = productViewModel.fetchProductDetails(widget.id);
   }
 
   @override

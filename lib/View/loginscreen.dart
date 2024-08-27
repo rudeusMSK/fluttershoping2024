@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mainpage_detailuser_v1/View/main_screen.dart';
+import 'package:mainpage_detailuser_v1/View/mainscreen.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -113,7 +113,7 @@ class Login extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const Main_screen(
+                    builder: (context) => const MainScreen(
                           title: '',
                         )),
               );
@@ -121,7 +121,6 @@ class Login extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               backgroundColor:
                   const Color.fromARGB(255, 133, 201, 234), // Màu nền
-              //side: BorderSide(color: Colors.black, width: 1),
               minimumSize: const Size(200, 60),
             ),
             child: const Text(

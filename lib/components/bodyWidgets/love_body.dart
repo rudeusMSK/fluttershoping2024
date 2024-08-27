@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget chatbody() {
+Widget lovebody() {
   return const SafeArea(
     child: Center(
-      child: Text("Review Screen Body"),
+      child: Text("Love Screen Body"),
     ),
-    
   );
 }
