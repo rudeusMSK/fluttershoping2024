@@ -157,8 +157,8 @@ delay !
   # Update: home screen 🙊🙊🙊
   </summary>
 <br>
+  <img src="https://github.com/user-attachments/assets/87a47380-9ce0-4dc3-b1aa-a45432e4fadf" width="200"/>
   
-  <img src="https://github.com/rudeusMSK/TeamFlutter_Demo2024/assets/160387470/9f732fc3-c9d8-4643-8f30-1cc25ebe043f" width="600"/>
 ---
 
 </details> 
