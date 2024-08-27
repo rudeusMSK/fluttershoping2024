@@ -68,7 +68,13 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                           ? Image.network(
                                   productImages[currentImageIndex],
                           errorBuilder: (context, error, stackTrace) => const Center(
-                          child: CircularProgressIndicator()),
+                          child: Column(
+                          crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                          children: [
+                          SizedBox(height: 10),
+                          CircularProgressIndicator()
+                          ])),
                           width: double.infinity,
                           height: 240,
                           fit: BoxFit.cover,

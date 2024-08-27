@@ -150,24 +150,18 @@ class HomeBodyState extends State<HomeBody> {
   Widget productListView() {
     return Consumer<ProductViewModel>(
       builder: (context, viewModel, child) {
-        // => chưa có repon từ endpoit >>> loading.gif
         if (viewModel.productCards.isEmpty) {
           return const Center(child: CircularProgressIndicator());
-        }
-        // show product info:
-        else {
+        } else {
           return GridView.builder(
-            // update: GridView.Count => GridView.builder
-            // Use: (hướng dẫn sử zụn)
-            itemCount: viewModel.productCards.length, // số lượng items
-            // build gird: items positions
+            physics:
+            const NeverScrollableScrollPhysics(),
+            itemCount: viewModel.productCards.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // col (2 cột như trên figma nhóa !)
-              childAspectRatio: 4 /
-                  5, // chiều rộng dài của mỗi item (để đại i, theo ông bà mách bảo :3 !!)
+              crossAxisCount: 2,
+              childAspectRatio: 4 / 5,
             ),
             itemBuilder: (context, index) {
-              // Get: product
               final product = viewModel.productCards[index];
               return GestureDetector(
                 onTap: () {
@@ -184,37 +178,26 @@ class HomeBodyState extends State<HomeBody> {
                 child: Card(
                   child: Column(
                     children: [
-
-                      // Img product:
                       product.imgUrl != null
                           ? Image.network(
-                              // link Src + {*.png, *.jpg}
                               ImageUrls.imageSrc + product.imgUrl.toString(),
-                              errorBuilder: (BuildContext context,
+                              width: 120,
+                              height: 120, errorBuilder: (BuildContext context,
                                   Object exception, StackTrace? stackTrace) {
                               return const Center(
                                   child: CircularProgressIndicator());
-                            },
-                              width: 120,
-                              height: 120,
-                            )
+                            })
                           : Text(
-                              product.imgUrl.toString(),
+                              ImageUrls.imageSrc + product.imgUrl.toString(),
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-
-                      // Name Product:
                       Text(
                         product.tenSP ?? "sp này hôk có tên á",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      
-                      // Price Product:
-                      Text(
-                        'Giá: ${product.giaBan} Đ',
-                      ),
+                      Text('Giá: ${product.giaBan} Đ'),
                     ],
                   ),
                 ),
