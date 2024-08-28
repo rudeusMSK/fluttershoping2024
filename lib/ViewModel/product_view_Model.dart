@@ -36,7 +36,7 @@ class ProductViewModel extends ChangeNotifier {
       DateTime now = DateTime.now();
 
       // Thời điểm tương lai giải sử gọi api trả về:
-      DateTime future = DateTime(2024, 8, 28, 00, 00, 00);
+      DateTime future = DateTime(2024, 10, 28, 00, 00, 00);
 
       // Tính khoảng thời gian còn lại
       Duration remaining = future.difference(now);

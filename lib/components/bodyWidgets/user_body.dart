@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:mainpage_detailuser_v1/Model/Users/UserModel.dart';
 import 'package:mainpage_detailuser_v1/ViewModel/User_View_Model.dart';
@@ -148,6 +150,10 @@ class LoginBodyState extends State<UserBody> {
                     "PROFILE",
                     textAlign: TextAlign.center,
                   ),
+                  Text('Tên người dùng: ${user.tenND}',
+                      style: const TextStyle(fontSize: 20)),
+                  Text('SĐT: ${user.sDT}',
+                      style: const TextStyle(fontSize: 20)),
                   Text('Tên đăng nhập: ${user.tenDangNhap}',
                       style: const TextStyle(fontSize: 20)),
                   const SizedBox(height: 10),
@@ -157,8 +163,10 @@ class LoginBodyState extends State<UserBody> {
                   Text('Giới tính: ${user.gioiTinh}',
                       style: const TextStyle(fontSize: 20)),
                   const SizedBox(height: 10),
-                  Text('ID: ${user.iDND}',
-                      style: const TextStyle(fontSize: 20)),
+                  Text('xin chào ! ${user.tenND}, chúng tôi đã xác nhận yêu cầu đăng nhập của bạn phiên đăng nhập lần này sẽ tồn tại trong 1 phút.',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.red)),
                 ],
               ),
             );

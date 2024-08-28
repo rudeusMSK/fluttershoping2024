@@ -37,6 +37,12 @@ class HomeBodyState extends State<HomeBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // count down discount:
+            AttendanceScreen(
+                hh: productViewModel.timeSale.hh.toString(),
+                mm: productViewModel.timeSale.mm.toString(),
+                ss: productViewModel.timeSale.ss.toString()
+            ),
             slideShow(),
             ChangeNotifierProvider(
               create: (context) => categoryViewModel,
@@ -52,28 +58,20 @@ class HomeBodyState extends State<HomeBody> {
             ),
             productListView(),
             // demo:
-            productListView(),
-            productListView(),
-            productListView(),
-            productListView(),
           ],
         ),
       ),
     );
   }
 
-// count down - slideshow:
+//slideshow:
   Widget slideShow() {
     return Container(
       margin: //const EdgeInsets.symmetric(horizontal: 16),
           const EdgeInsets.fromLTRB(16, 0, 16, 10),
-      child: Column(
+      child: const Column(
         children: [
-          AttendanceScreen(
-              hh: productViewModel.timeSale.hh.toString(),
-              mm: productViewModel.timeSale.mm.toString(),
-              ss: productViewModel.timeSale.ss.toString()),
-          const EnlargeStrategyZoomDemo(),
+          EnlargeStrategyZoomDemo(),
         ],
       ),
     );
