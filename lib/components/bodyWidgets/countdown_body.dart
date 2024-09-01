@@ -42,6 +42,13 @@ class AttendanceScreenState extends State<AttendanceScreen> {
     super.initState();
   }
 
+// distroy timer
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

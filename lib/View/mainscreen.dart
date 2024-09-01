@@ -16,7 +16,13 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  final PageController _pageController = PageController();
+  late final PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,16 +32,24 @@ class MainScreenState extends State<MainScreen> {
   }
 
   @override
+  void dispose() {
+    // distroy PageController
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<Widget> bodyItem = [
       const HomeBody(), // 0
       editbody(), // 1
       editbody(), // 2
       editbody(), // 3
-      const UserBody(), // 4s
+      const UserBody(), // 4
     ];
 
     return Scaffold(
+      // Appbar customs:
       appBar: const CustomAppBar(),
       body: Column(
         children: [
