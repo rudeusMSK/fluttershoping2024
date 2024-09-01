@@ -157,8 +157,10 @@ delay !
   # Update: home screen 🙊🙊🙊
   </summary>
 <br>
-  
-  <img src="https://github.com/user-attachments/assets/a63eb844-d351-4c1a-bf08-b78a87b9aa26" width="200"/>
+<div> New: </div>
+
+ ![update4_buildlayout](https://github.com/user-attachments/assets/601fcfab-be53-4164-84e7-63480d7e5422)
+
 
 ---
 
