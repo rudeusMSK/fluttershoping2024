@@ -36,7 +36,6 @@ class MainScreenState extends State<MainScreen> {
     ];
 
     return Scaffold(
-      // custom Appbar:
       appBar: const CustomAppBar(),
       body: Column(
         children: [
