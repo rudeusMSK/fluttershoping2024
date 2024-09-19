@@ -17,6 +17,11 @@ Project:
 
 ---
 ## Nhấn để xem chi tiết ฅ^•ﻌ•^ฅ.
+
+bản vẽ figma: [tại đây](https://www.figma.com/design/AzwPKLm81SALQlf1J5CzB1/app-shopping-sports?node-id=0-1&node-type=canvas&t=ukk1QUzq9ej2tRkr-0)
+<br>
+mã nguồn backend: [tại đây](https://github.com/rudeusMSK/ShoppingMiddleware) 
+
 A new Flutter project.
 <details lose="" align="left">
   <summary>  
